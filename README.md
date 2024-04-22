@@ -67,32 +67,3 @@ Django web application that allows users to view, share and manage study resourc
    ```bash
    python manage.py createsuperuser
    ```
-
-## Screenshots
-
-Login page:
-
-![Login page](https://github.com/Rmariner25/django_web_app/blob/main/Screenshots/login_page.jpg)
-<br>
-
-### Logged in:
-
-Home page:
-
-![Home page](https://github.com/Rmariner25/django_web_app/blob/main/Screenshots/home_page.jpg) 
-<br>
-
-New upload:
-
-![New upload](https://github.com/Rmariner25/django_web_app/blob/main/Screenshots/new_upld.jpg) 
-<br>
-
-Uploads by user:
-
-![Uploads by user](https://github.com/Rmariner25/django_web_app/blob/main/Screenshots/user_uploads.jpg)
-<br>
-
-Edit profile:
-
-![Edit profile](https://github.com/Rmariner25/django_web_app/blob/main/Screenshots/edit_profile.jpg)
-<br>
