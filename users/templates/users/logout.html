@@ -1,0 +1,30 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+   
+ 
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   
+ 
+	<div>
+        
+              <div class="alert alert-success">
+			  <i class="ti-check" ></i>
+			  
+                You have been logged out.
+              </div>
+          
+       
+</div> 
+<br> 
+ 
+<p class="lead">Didn't mean to logout? <a href="{% url 'login' %} ">Log in again.</a>
+</p>
+   
+  
+   
+{% endblock content %}

@@ -1,0 +1,89 @@
+
+
+
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+           
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+    
+   
+
+          <div class="row">
+
+
+
+ <div class="col-md-12 grid-margin stretch-card transparent">
+                  <div class="card card-dark-blue">
+                    <div class="card-body">
+               
+                      <h3 class="mb-3">To Upload</h3>
+					    
+            
+					  
+					<ul class="list-arrow">
+
+                    <li>  Note that the title can be up to 100 characters.</li>
+                    <li>  The content or the description can be up to 500 characters.</li>
+                    <li>  Allowed file extensions are <label class="badge badge-danger font-weight-bold">.pdf</label>, <label class="badge badge-warning font-weight-bold">.ppt</label>,
+					               <label class="badge badge-warning font-weight-bold">.pptx</label>, <label class="badge badge-info font-weight-bold">.doc</label>,
+								   <label class="badge badge-info font-weight-bold">.docx</label>, and <label class="badge badge-success font-weight-bold">.txt</label>.
+								   </li>
+                    <li> The file size should not exceed 15 MB.</li>
+					
+					<li>  Do not post anything that is either offensive, controversial, political or obscene in nature.</li>
+                  </ul>
+					  
+                    </div>
+                  </div>
+                </div>
+
+            <div class="col-md-12 grid-margin stretch-card transparent">
+              <div class="card card-inverse-primary">
+              
+              <div class="card-body">
+           
+                  <form class="forms-sample" action="" method="POST" enctype="multipart/form-data">
+                  
+					
+					              {% csrf_token %}
+              <fieldset class="form-group">
+                 
+                    {{ form|crispy }}
+              </fieldset>
+           
+                    
+     
+	   
+	   <button type="submit" class="btn btn-inverse-primary btn-md">Upload</button>
+<br>
+
+					
+
+</form>
+</div>
+</div>
+</div>
+					
+				
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+	  
+	  
+	  
+{% endblock content %}
+
+

@@ -1,0 +1,321 @@
+{% extends "blog/base.html" %}
+{% block content %}
+{% load static %}
+    
+<style>
+.ovvv {
+word-break:break-all;
+word-wrap: break-word;
+}
+
+
+.cardee {
+
+  box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2);
+ 
+}
+.iomg {
+ width: 38px;
+  height: 38px;
+  border-radius: 100%;
+
+}
+
+.xmz {
+
+ font-size: 16.8px;
+ 
+ 
+ }
+
+.xmzd {
+
+ font-size: 18px;
+ }
+
+
+
+
+hr.style-one {
+border: 0;
+height: 1px;
+background: #ced4da;
+
+}
+
+div.deedw {
+  line-height: 2.6;
+}
+
+
+
+
+
+</style>
+	
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+          <div class="row">
+             
+	    
+	  
+	  
+	  <div class="col-md-12">
+                  
+               
+			   
+			     {% for post in posts %}
+	{% if forloop.first %}
+	{% if post.author == user %}
+	   
+         	<h3>Your Uploads ({{ page_obj.paginator.count }})</h3>
+    
+	{% else %}
+	 <h3>Uploads by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h3>
+	  {% endif %}
+	{% endif %}
+	{% endfor %}
+			   
+ 
+                    
+                </div>
+	  
+	
+&nbsp;
+	  
+	   {% for post in posts %}
+	  
+	  
+	  <div class="col-md-12 grid-margin stretch-card">
+              <div class="card cardee">
+                <div class="card-body">
+				
+									{% if post.author == user %}
+				
+			 <div class="d-flex justify-content-between">
+						  
+				 <div class="media">
+					
+
+            		 <a href="{% url 'user-posts' post.author.username %}"><img class="iomg d-flex align-self-start mr-3 " src="{% static 'blog/images/faces/face28.jpg' %}" alt="."></a>
+	    
+
+	  
+
+					
+					
+                    <div class="media-body">
+					
+					
+<h5>
+                   
+             <a class="text-dark ovvv" href="{% url 'user-posts' post.author.username %}" style="text-decoration:none">You</a>
+  
+	           
+	 
+			
+</h5>			
+
+<h4>		   
+              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+				</h4>	
+		
+                    </div>
+					
+                  </div> 
+				
+				
+				
+				
+				
+				   <div class="dropdown">
+                          <a id="dropdownMenuIconButton2" href="#" style="text-decoration:none;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <button type="button" class="btn btn-light btn-icon btn-sm">
+
+						 <i class="ti-more"></i>
+                          </button>						 
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton2">
+                      
+                            <a class="dropdown-item" href="{% url 'post-update' post.id %}">Edit</a>
+                           
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'post-delete' post.id %}">Delete</a>
+                          </div>
+                        </div>
+						
+					</div>	
+						
+				
+{% else %}
+
+
+				
+								 <div class="media">
+			
+	    
+	            	<a href="{% url 'user-posts' post.author.username %}"><img class="iomg  d-flex align-self-start mr-3" src="{% static 'blog/images/faces/face27.jpg' %}" alt="."></a>
+	  
+
+					
+					
+                    <div class="media-body">
+					
+					
+<h5>
+                   
+         
+  
+	              <a class="text-dark ovvv" href="{% url 'user-posts' post.author.username %}"  style="text-decoration:none">{{ post.author|truncatechars:22 }}</a>
+	 
+			
+</h5>			
+
+<h4>		   
+              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+				</h4>
+                    </div>
+					
+                  </div> 
+				
+				
+				
+			
+				{% endif %}
+				
+				
+								 {% if post.file %}
+               
+			   
+			      
+			
+			   <div class="deedw">
+			    {% if post.extension == '.pdf' %}   
+		  <label class="badge badge-danger font-weight-bold">{{ post.file.size | filesizeformat}} &#183; {{ post.extension | slice:"1:" | upper }}</label>
+	 {% elif post.extension == '.ppt' or post.extension == '.pptx' %}  
+		  <label class="badge badge-warning font-weight-bold">{{ post.file.size | filesizeformat}} &#183; {{ post.extension | slice:"1:" | upper }}</label>
+	 {% elif post.extension == '.doc' or post.extension == '.docx' %}  	  
+		    <label class="badge badge-info font-weight-bold">{{ post.file.size | filesizeformat}} &#183; {{ post.extension | slice:"1:" | upper }}</label>
+			
+		{% elif post.extension == '.txt' %}  	  
+		    <label class="badge badge-success font-weight-bold">{{ post.file.size | filesizeformat}} &#183; {{ post.extension | slice:"1:" | upper }}</label>
+
+		{% else %}  	  
+		    <label class="badge badge-danger font-weight-bold">{{ post.file.size | filesizeformat}} &#183; {{ post.extension | slice:"1:" | upper }}</label>
+			
+          {% endif %}   
+				
+
+				
+				{% endif %}
+			</div>
+  		                                                                          
+		  
+		  <h4>{{ post.title }}</h4> 
+		
+
+           <p class="lead">{{ post.content }}</p> 
+
+
+
+			                 <hr>
+				
+				 <div class="d-flex justify-content-between">
+			
+
+             {% if post.file %}
+			 
+			 
+			 &nbsp;
+			 <div>
+             <a href="{% url 'post-detail' post.id %}" style="text-decoration:none;">
+            <button type="button" class="btn btn-light btn-icon btn-md">
+			 <i class="ti-link"></i>   
+
+            </button>
+			</a>
+			
+			&nbsp;
+			&nbsp;
+	      
+				 <a   href="{{ post.file.url }}"   download  style="text-decoration:none;" > 
+				 
+				 <button type="button" class="btn btn-light btn-icon btn-md">
+			 <i class="ti-import"></i>   
+
+            </button>
+			</a>
+            
+       
+</div>
+            
+		  </div>
+		  
+		
+          {% endif %}
+		  
+		  
+                </div>
+              </div>
+            </div>
+
+
+    {% endfor %}
+
+
+</div>
+
+
+
+<br>
+	<br>
+	 
+
+              
+	 <div class="btn-group" role="group">
+    {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a  href="?page=1"><button type="submit" class="btn btn-inverse-primary btn-icon"> <i class="ti-angle-double-left"></i> </button> </a>
+		&nbsp;
+        <a  href="?page={{ page_obj.previous_page_number }}"><button type="submit" class="btn btn-inverse-primary btn-icon"> <i class="ti-angle-left"></i> </button> </a>
+      &nbsp;
+	  {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a href="?page={{ num }}"><button type="submit" class="btn btn-primary btn-icon">{{ num }}</button></a>
+		  &nbsp;
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+		
+          <a href="?page={{ num }}"><button type="submit" class="btn btn-inverse-primary btn-icon">{{ num }}</button></a>
+		  &nbsp;
+		  
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}"><button type="submit" class="btn btn-inverse-primary btn-icon"> <i class="ti-angle-right"></i> </button> </a>
+       &nbsp;
+	   <a href="?page={{ page_obj.paginator.num_pages }}"><button type="submit" class="btn btn-inverse-primary btn-icon"> <i class="ti-angle-double-right"></i> </button> </a>
+      {% endif %}
+
+    {% endif %}
+	
+	
+	</div>
+	<br>
+	<br>
+
+<br>
+	
+	
+{% endblock content %}

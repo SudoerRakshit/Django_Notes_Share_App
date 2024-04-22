@@ -1,0 +1,12 @@
+1. Map function
+2. Iter tools
+3. Lamda function
+4. Exception Handling
+5. Decorators 
+6. Collections
+7. Generators
+8. Magic Methods
+9. Threading
+10. Regular Expressions
+
+#sample .txt file for demo
