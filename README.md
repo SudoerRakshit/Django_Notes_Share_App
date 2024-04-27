@@ -23,7 +23,7 @@ Django web application that allows users to view, share and manage study resourc
 1. First, clone the repository to your local machine: 
   
    ```bash
-   git clone [https://github.com/SudoerRakshit/Django_Notes_Share_App.git]
+   git clone https://github.com/SudoerRakshit/Django_Notes_Share_App.git
    ```
   
 2. Then cd into the folder `django_web_app`(base directory):
